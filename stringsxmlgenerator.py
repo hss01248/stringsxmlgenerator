@@ -16,13 +16,20 @@ modelname = "native_pay"
 
 # 添加字符串
 def getkeybyen(en):
-    str0 = str.replace(en, ' ', '_')
+   str0 = str.replace(en, '  ', '_')
+    str0 = str.replace(str0, ' ', '_')
+    str0 = str.replace(str0, ' ', '_')
     str0 = str.replace(str0, ',', '_')
     str0 = str.replace(str0, '!', '_')
     str0 = str.replace(str0, '?', '_')
     str0 = str.replace(str0, '.', '_')
     str0 = str.replace(str0, '/', '_')
     str0 = str.replace(str0, ':', '')
+    str0 = str.replace(str0, '-', '_')
+    str0 = str.replace(str0, '\'', '_')
+    str0 = str.replace(str0, '“', '')
+    str0 = str.replace(str0, '”', '')
+    str0 = str.replace(str0, '__', '_')
     str0 = str.lower(str0)
     print(str0)
     if len(str0) > 20:
