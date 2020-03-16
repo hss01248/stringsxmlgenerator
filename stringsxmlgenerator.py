@@ -11,12 +11,12 @@ from xml.dom import minidom
 from xlrd import open_workbook
 import codecs
 
-modelname = "native_pay"
+modelname = "alfmart"
 
 
 # 添加字符串
 def getkeybyen(en):
-   str0 = str.replace(en, '  ', '_')
+    str0 = str.replace(en, '  ', '_')
     str0 = str.replace(str0, ' ', '_')
     str0 = str.replace(str0, ' ', '_')
     str0 = str.replace(str0, ',', '_')
@@ -29,19 +29,30 @@ def getkeybyen(en):
     str0 = str.replace(str0, '\'', '_')
     str0 = str.replace(str0, '“', '')
     str0 = str.replace(str0, '”', '')
+    str0 = str.replace(str0, '&', '')
+    str0 = str.replace(str0, '%', '')
+    str0 = str.replace(str0, ')', '')
+    str0 = str.replace(str0, '(', '')
+    str0 = str.replace(str0, '[', '')
+    str0 = str.replace(str0, ']', '')
+    str0 = str.replace(str0, '{', '')
+    str0 = str.replace(str0, '}', '')
+    str0 = str.replace(str0, '&quot;', '')
     str0 = str.replace(str0, '__', '_')
     str0 = str.lower(str0)
     print(str0)
-    if len(str0) > 20:
-        str0 = str0[0: 19]
+    if len(str0) > 30:
+        str0 = str0[0: 29]
     return modelname + '_' + str0
 
 
 def addelement(docen, resourcesen, key, value):
-    text_element = docen.createElement('string')
-    text_element.setAttribute('name', key)
-    text_element.appendChild(docen.createTextNode(value))
-    resourcesen.appendChild(text_element)
+    if len(value) != 0:
+        text_element = docen.createElement('string')
+        text_element.setAttribute('name', key)
+        text_element.appendChild(docen.createTextNode(value))
+        resourcesen.appendChild(text_element)
+
 
 
 def savedoc(filename, doc):
@@ -118,9 +129,10 @@ for sheet in workbook.sheets():
             continue
         key = getkeybyen(en)
 
-        ind = sheet.cell(row_index, 2).value
-        ms = sheet.cell(row_index, 3).value
-        vn = sheet.cell(row_index, 4).value
+        en = sheet.cell(row_index, 2).value
+        ind = sheet.cell(row_index, 3).value
+        ms = sheet.cell(row_index, 4).value
+        vn = sheet.cell(row_index, 5).value
         # 过滤xx,xxx,将之替换成占位符%1$s,%2$s的形式
         en = repalcexxxforplaceholder(en)
         ind = repalcexxxforplaceholder(ind)
@@ -133,7 +145,7 @@ for sheet in workbook.sheets():
         addelement(docms, resourcesms, key, ms)
         addelement(docvn, resourcesvn, key, vn)
 
-savedoc("strings-en.xml", docen)
-savedoc("strings-in.xml", docin)
-savedoc("strings-ms.xml", docms)
-savedoc("strings-vn.xml", docvn)
+savedoc(modelname+"-en.xml", docen)
+savedoc(modelname+"-in.xml", docin)
+savedoc(modelname+"-ms.xml", docms)
+savedoc(modelname+"-vn.xml", docvn)
