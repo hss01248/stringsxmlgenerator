@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<resources>
+    <string name="permissions_record_audio">record audio</string>
+    <string name="permissions_location">location</string>
+    <string name="permissions_read_phone_state">read phone state</string>
+    <string name="permissions_camera">camera</string>
+    <string name="permissions_read_contacts">read contacts</string>
+</resources>

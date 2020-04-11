@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<resources>
+    <string name="permissions_record_audio">ghi âm</string>
+    <string name="permissions_location">trí</string>
+    <string name="permissions_read_phone_state">đọc trạng thái điện thoại</string>
+    <string name="permissions_camera">Máy ảnh</string>
+    <string name="permissions_read_contacts">đọc danh bạ</string>
+</resources>

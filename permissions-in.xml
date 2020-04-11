@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<resources>
+    <string name="permissions_record_audio">suara rekaman</string>
+    <string name="permissions_location">lokasi</string>
+    <string name="permissions_read_phone_state">baca status ponsel</string>
+    <string name="permissions_camera">kamera</string>
+    <string name="permissions_read_contacts">baca kontak</string>
+</resources>

@@ -11,7 +11,7 @@ from xml.dom import minidom
 from xlrd import open_workbook
 import codecs
 
-modelname = "alfmart"
+modelname = "permissions"
 
 
 # 添加字符串
